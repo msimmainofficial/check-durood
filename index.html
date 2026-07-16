@@ -10,7 +10,7 @@
 
 body{
 font-family:Arial,sans-serif;
-background:#2b160b;
+background:#241006;
 margin:0;
 height:100vh;
 display:flex;
@@ -18,56 +18,69 @@ justify-content:center;
 align-items:center;
 }
 
+
 .card{
-background:#d4af37;
-padding:28px;
-border-radius:20px;
+background:linear-gradient(145deg,#ffd700,#ffb300);
+padding:30px;
+border-radius:22px;
 width:90%;
 max-width:420px;
-box-shadow:0 10px 30px rgba(0,0,0,.5);
+box-shadow:0 15px 40px rgba(0,0,0,.7);
+border:3px solid #fff1a8;
 }
+
+
+.logo{
+display:block;
+margin:auto;
+width:90px;
+height:90px;
+object-fit:contain;
+margin-bottom:15px;
+}
+
 
 h2{
 text-align:center;
-color:#3b1f0b;
+color:#3b1b08;
 font-size:26px;
-margin-bottom:20px;
+line-height:1.3;
+margin:10px 0 20px;
 }
+
 
 input{
 width:100%;
 padding:14px;
 margin-top:12px;
-border-radius:10px;
+border-radius:12px;
 box-sizing:border-box;
-border:2px solid #3b1f0b;
+border:2px solid #3b1b08;
 font-size:16px;
-color:#3b1f0b;
-background:white;
+color:#3b1b08;
 }
+
 
 button{
 width:100%;
 padding:14px;
-margin-top:15px;
-border-radius:10px;
+margin-top:16px;
+border-radius:12px;
 border:none;
-background:#3b1f0b;
+background:#3b1b08;
 color:white;
 font-size:17px;
-cursor:pointer;
+font-weight:bold;
 }
 
-button:hover{
-opacity:.9;
-}
 
 #result{
 margin-top:20px;
-color:#3b1f0b;
+color:#3b1b08;
 font-size:18px;
-line-height:1.6;
 font-weight:bold;
+line-height:1.7;
+text-align:center;
 }
 
 </style>
@@ -78,18 +91,28 @@ font-weight:bold;
 
 <div class="card">
 
+
+<!-- LOGO YAHAN DIKHEGA -->
+<img src="logo.png" class="logo">
+
+
 <h2>
-Mission Syedi Ikram E Millat<br>
-Durood Competition
+MISSION SYEDI IKRAM E MILLAT<br>
+DUROOD COMPETITION
 </h2>
+
 
 <input id="phone" placeholder="Enter Mobile Number">
 
-<button onclick="check()">Check Total</button>
+
+<button onclick="check()">CHECK TOTAL</button>
+
 
 <div id="result"></div>
 
+
 </div>
+
 
 
 <script>
@@ -101,29 +124,24 @@ function check(){
 
 let phone=document.getElementById("phone").value;
 
+
 fetch(api+"?phone="+encodeURIComponent(phone))
 
-.then(response=>response.json())
+.then(r=>r.json())
 
-.then(data=>{
+.then(d=>{
 
 document.getElementById("result").innerHTML=
-
-"Name: "+data.name+
-"<br>Total Durood: "+data.total+
-"<br>Last Entry: "+data.lastEntry;
-
-})
-
-.catch(error=>{
-
-document.getElementById("result").innerHTML="Error Loading Data";
+"Name: "+d.name+
+"<br>Total Durood: "+d.total+
+"<br>Last Entry: "+d.lastEntry;
 
 });
 
 }
 
 </script>
+
 
 </body>
 </html>
