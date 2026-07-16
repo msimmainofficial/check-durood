@@ -3,35 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Check Mission Syedi Ikram E Milat Durood Total</title>
+
+<title>Mission Syedi Ikram E Millat Durood Competition</title>
+
 <style>
-body{font-family:Arial,sans-serif;background:00072D;margin:0;display:flex;justify-content:center;align-items:center;height:100vh}
-.card{background:#FFD700;padding:24px;border-radius:16px;width:90%;max-width:420px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-input,button{width:100%;padding:12px;margin-top:12px;border-radius:8px;box-sizing:border-box}
-input{border:2px solid #3d251e}
-button{background:#5b3e31;color:#FFD700;border:none}
-</style>
-</head>
-<body>
-<div class="card">
-<h2> DUROOD COMPETITION<br>MISSION SYEDI IKRAM E MILLAT</h2>
-<p 3d251e
-Check Your Total Durood 
-</p>
-<input id="phone" placeholder="Enter Mobile Number">
-<button onclick="check()">Check Total</button>
-<div id="result" style="margin-top:18px"></div>
-</div>
-<script>
-const api="https://script.google.com/macros/s/AKfycbx-6iXRu0iMX4sNE7qFCtRTFGKo0iQ7lA9n9rgYUnzU8Mp0x3gb43fIZbkd9jnmPxkwYQ/exec";
-function check(){
-fetch(api+"?phone="+encodeURIComponent(document.getElementById('phone').value))
-.then(r=>r.json())
-.then(d=>{
-document.getElementById('result').innerHTML=
-`<b>Name:</b> ${d.name}<br><b>Total Durood:</b> ${d.total}<br><b>Last Entry:</b> ${d.lastEntry}`;
-});
+
+body{
+font-family:Arial,sans-serif;
+background:#2b160b;
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
+
+.card{
+background:#d4af37;
+padding:28px;
+border-radius:20px;
+width:90%;
+max-width:420px;
+box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+h2{
+text-align:center;
+color:#3b1f0b;
+font-size:26px;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-top:12px;
+border-radius:10px;
+box-sizing:border-box;
+border:2px solid #3b1f0b;
+font-size:16px;
+color:#3b1f0b;
+background:white;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:15px;
+border-radius:10px;
+border:none;
+background:#3b1f0b;
+color:white;
+font-size:17px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+
+#result{
+margin-top:20px;
+color:#3b1f0b;
+font-size:18px;
+line-height:1.6;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>
+Mission Syedi Ikram E Millat<br>
+Durood Competition
+</h2>
+
+<input id="phone" placeholder="Enter Mobile Number">
+
+<button onclick="check()">Check Total</button>
+
+<div id="result"></div>
+
+</div>
+
+
+<script>
+
+const api="https://script.google.com/macros/s/AKfycbxzE8ax6GJjc8jXZRtS1KM3_wB_P5zbPXD-KPmfWRnA2BbWaBNqc9I3aoJfTKc_Wh7iFg/exec";
+
+
+function check(){
+
+let phone=document.getElementById("phone").value;
+
+fetch(api+"?phone="+encodeURIComponent(phone))
+
+.then(response=>response.json())
+
+.then(data=>{
+
+document.getElementById("result").innerHTML=
+
+"Name: "+data.name+
+"<br>Total Durood: "+data.total+
+"<br>Last Entry: "+data.lastEntry;
+
+})
+
+.catch(error=>{
+
+document.getElementById("result").innerHTML="Error Loading Data";
+
+});
+
+}
+
 </script>
+
 </body>
 </html>
